@@ -40,6 +40,13 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/song', songRoutes);
 app.use('/api/album', albumRoutes);
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+  })
+}
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
