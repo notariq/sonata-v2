@@ -13,8 +13,8 @@ export const authCallback = async (req, res, next) => {
         imageURL: imageUrl,
       });
 
-      res.status(201).json({ success: true });
     }
+    res.status(201).json({ success: true });
   } catch (error) {
     console.error("Error in auth callback route:", error);
     next(error);

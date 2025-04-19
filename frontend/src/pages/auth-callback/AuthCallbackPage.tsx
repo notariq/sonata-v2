@@ -20,9 +20,7 @@ const AuthCallbackPage = () => {
 					clerkId: user.id,
 					userName: user.firstName,
 					imageUrl: user.imageUrl,
-				});
-				
-				console.log(user)
+				});				
 			} catch (error) {
 				console.log("Error in auth callback", error);
 			} finally {

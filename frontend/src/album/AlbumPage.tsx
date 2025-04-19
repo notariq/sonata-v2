@@ -1,7 +1,7 @@
 import { useMusicStore } from "@/store/useMusicStore";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Button } from "@/components/ui/button";
 import { usePlayerStore } from "@/store/usePlayerStore";
@@ -15,7 +15,7 @@ export const formatDuration = (seconds: number) => {
 const AlbumPage = () => {
     const { albumId } = useParams();
 	const { fetchAlbumById, currentAlbum, isLoading } = useMusicStore();
-    const { currentSong, playAlbum, togglePlay } = usePlayerStore();
+    const { currentSong, playAlbum, togglePlay, isPlaying } = usePlayerStore();
 
     useEffect(() => {
         if (albumId) fetchAlbumById(albumId);
@@ -63,11 +63,23 @@ const AlbumPage = () => {
                         </div>
                         <div className="mb-4">
                             <Button
+                                variant={"secondary"}
                                 className="text-white sm:h-15 sm:w-40 hover:scale-105 transition-all duration-200 ease-in-out flex justify-center items-center gap-2"
                                 onClick={handlePlayAlbum}
                             >
-                                <Play />
-                                <span className="font-bold tracking-wide">Play</span>
+                                <div className="flex items-center gap-2">
+                                    {isPlaying && currentAlbum?.songs.some((song) => song._id === currentSong?._id) ? (
+                                        <>
+                                            <Pause />
+                                            <span className="text-sm font-bold tracking-wide">Pause</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Play />
+                                            <span className="font-bold tracking-wide">Play</span>
+                                        </>
+                                    )}
+                                </div>
                             </Button>
                         </div>
                     </div>
