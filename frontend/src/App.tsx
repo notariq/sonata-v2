@@ -6,6 +6,7 @@ import NotFoundPage from "./pages/error/NotFoundPage";
 import MainLayout from "./layouts/MainLayout"; 
 import AlbumPage from "./album/AlbumPage";
 import AdminPage from "./pages/admin/AdminPage";
+import FavoritePage from "./pages/favorites/FavoritePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/album/:albumId" element={<AlbumPage />}/>
         </Route>
       </Routes>  

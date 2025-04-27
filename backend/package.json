@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "echo 'Starting the App...' && node src/index.js",
+    "dev": "echo 'Running Development Server...' && nodemon src/index.js",
     "build": "echo 'No build step required for backend yet...'"
   },
   "keywords": [],

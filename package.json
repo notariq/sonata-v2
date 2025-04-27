@@ -5,7 +5,9 @@
   "workspaces": ["frontend", "backend"],
   "scripts": {
     "build": "npm run build --workspace frontend && npm run build --workspace backend",
-    "dev": "npm run dev --workspace backend"
+    "start": "npm run build --workspace frontend && npm run start --workspace backend",
+    "backend-dev": "npm run dev --workspace backend",
+    "frontend-dev": "npm run dev --workspace frontend"
   },
   "keywords": [],
   "author": "",

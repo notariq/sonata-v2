@@ -33,7 +33,7 @@ const LeftSideBar = () => {
 						<span className='hidden md:inline'>Home</span>
 					</Link>
 					<Link
-						to={"/"}
+						to={"/favorites"}
 						className={cn(
 							buttonVariants({
 								variant: "ghost",
