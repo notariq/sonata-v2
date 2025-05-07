@@ -7,11 +7,11 @@ import cors from 'cors';
 
 import { connectDB } from './lib/db.js';
 
-import userRoutes from './routes/user.route.js';
+import userRoutes from './routes/users.route.js';
 import authRoutes from './routes/auth.route.js';
 import adminRoutes from './routes/admin.route.js';
-import songRoutes from './routes/song.route.js';
-import albumRoutes from './routes/album.route.js';
+import songRoutes from './routes/songs.route.js';
+import albumRoutes from './routes/albums.route.js';
 
 dotenv.config();
 
@@ -37,14 +37,14 @@ app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 
-app.use('/api/song', songRoutes);
-app.use('/api/album', albumRoutes);
+app.use('/api/songs', songRoutes);
+app.use('/api/albums', albumRoutes);
 
 app.use((err, req, res, next) => {
   res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
 });
 
-if(process.env.NODE_ENV === 'production') {
+if(process.env.NODE_ENV === 'development') { // Temporary for development mode
   app.use(express.static(path.join(__dirname, '../frontend/dist')));
   app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
@@ -52,6 +52,6 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running...\nLocal:\thttp://localhost:${PORT}/`);
   connectDB();
 });

@@ -1,5 +1,5 @@
-import { Song } from "../models/song.model.js";
-import { Album } from "../models/album.model.js";
+import { Song } from "../models/songs.model.js";
+import { Album } from "../models/albums.model.js";
 import cloudinary from "../lib/cloudinary.js";
 
 const uploadToCLoudinary = async (file) => {
